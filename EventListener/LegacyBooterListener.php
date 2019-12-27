@@ -65,6 +65,8 @@ class LegacyBooterListener implements EventSubscriberInterface
      */
     public function onKernelRequest(RequestEvent $event)
     {
+
+
         if ($this->kernel->isBooted() === false) {
             $this->kernel->boot($this->container);
         }

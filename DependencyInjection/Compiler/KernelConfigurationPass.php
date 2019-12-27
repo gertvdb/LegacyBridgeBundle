@@ -26,8 +26,7 @@ class KernelConfigurationPass implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container)
     {
-
-
+        
         $kernelId      = $container->getParameter('legacy_bridge_bundle.legacy_kernel.id');
         $kernelOptions = $container->getParameter('legacy_bridge_bundle.legacy_kernel.options');
         $classLoaderId = $this->getClassLoaderId($container);

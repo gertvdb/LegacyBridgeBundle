@@ -7,8 +7,10 @@ namespace Tactics\LegacyBridgeBundle;
 use Composer\Autoload\ClassLoader;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
+use Tactics\LegacyBridgeBundle\DependencyInjection\Compiler\KernelConfigurationPass;
 use Tactics\LegacyBridgeBundle\DependencyInjection\Compiler\LoaderInjectorPass;
 use Tactics\LegacyBridgeBundle\DependencyInjection\Compiler\ReplaceRouterPass;
+use Tactics\LegacyBridgeBundle\DependencyInjection\LegacyBridgeBundleExtension;
 
 /**
  * Class LegacyBridgeBundle
@@ -41,7 +43,12 @@ class LegacyBridgeBundle extends Bundle
             $container->addCompilerPass(new LoaderInjectorPass($this->loader));
         }
 
-        //$container->addCompilerPass(new KernelConfigurationPass());
+        $container->addCompilerPass(new KernelConfigurationPass());
         $container->addCompilerPass(new ReplaceRouterPass());
+    }
+
+    public function getContainerExtension()
+    {
+        return new LegacyBridgeBundleExtension();
     }
 }

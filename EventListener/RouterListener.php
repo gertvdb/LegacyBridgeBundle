@@ -37,11 +37,11 @@ class RouterListener implements EventSubscriberInterface
 
 
     /**
-     * @param LegacyKernelInterface $legacyKernel
      * @param SymfonyRouterListener $routerListener
+     * @param LegacyKernelInterface $legacyKernel
      * @param LoggerInterface       $logger
      */
-    public function __construct(LegacyKernelInterface $legacyKernel, SymfonyRouterListener $routerListener, LoggerInterface $logger=null)
+    public function __construct(SymfonyRouterListener $routerListener, LegacyKernelInterface $legacyKernel=null, LoggerInterface $logger=null)
     {
         $this->legacyKernel   = $legacyKernel;
         $this->routerListener = $routerListener;
@@ -68,17 +68,20 @@ class RouterListener implements EventSubscriberInterface
                 $this->logger->info($message);
             }
 
-            // When the request could not be dispatched through symfony 5
-            // we fallback to our legacy kernel to dispatch the request.
-            $response = $this->legacyKernel->handle(
-                $event->getRequest(),
-                $event->getRequestType(),
-                true
-            );
+            if ($this->legacyKernel !== null) {
 
-            if ($response->getStatusCode() !== 404) {
-                $event->setResponse($response);
-                return $event;
+                // When the request could not be dispatched through symfony 5
+                // we fallback to our legacy kernel to dispatch the request.
+                $response = $this->legacyKernel->handle(
+                    $event->getRequest(),
+                    $event->getRequestType(),
+                    true
+                );
+
+                if ($response->getStatusCode() !== 404) {
+                    $event->setResponse($response);
+                    return $event;
+                }
             }
         }
 

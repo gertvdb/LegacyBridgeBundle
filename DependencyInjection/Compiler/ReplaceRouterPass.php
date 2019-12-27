@@ -30,10 +30,10 @@ class ReplaceRouterPass implements CompilerPassInterface
         if ($container->hasDefinition('legacy_bridge_bundle.router_listener') === true) {
             // First get te default router_listener.
             $routerListener = $container->getDefinition('router_listener');
-
+            
             // Then get our custom route listener and inject the default route listener.
             $definition = $container->getDefinition('legacy_bridge_bundle.router_listener');
-            $definition->replaceArgument(1, $routerListener);
+            $definition->replaceArgument(0, $routerListener);
 
             // Remap the route_listener service to our custom route listener.
             $container->setAlias('router_listener', 'legacy_bridge_bundle.router_listener');

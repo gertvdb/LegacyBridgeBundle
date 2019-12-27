@@ -6,6 +6,7 @@
 
     <parameters>
         <parameter key="legacy_bridge_bundle.router_listener.class">Tactics\LegacyBridgeBundle\EventListener\RouterListener</parameter>
+        <parameter key="legacy_bridge_bundle.legacy_booter_listener.class">Tactics\LegacyBridgeBundle\EventListener\LegacyBooterListener</parameter>
     </parameters>
 
     <services>
@@ -14,14 +15,19 @@
             Later on we can dive deeper into the autowire functionality.
         -->
 
-        <service id="legacy_bridge_bundle.router_listener" class="%legacy_bridge_bundle.router_listener.class%">
+        <service id="legacy_bridge_bundle.router_listener" class="%legacy_bridge_bundle.router_listener.class%" autowire="true">
             <tag name="kernel.event_subscriber" />
             <tag name="monolog.logger" channel="event" />
-            <argument type="service" id="legacy_bridge_bundle.legacy_kernel" />
             <argument type="service" id="router_listener" />
+            <argument type="service" id="legacy_bridge_bundle.legacy_kernel" />
             <argument type="service" id="logger" on-invalid="ignore" />
         </service>
 
-        <service id="legacy_bridge_bundle.router_listener" class="" autowire="false"/>
+        <service id="legacy_bridge_bundle.legacy_booter_listener" class="%legacy_bridge_bundle.legacy_booter_listener.class%" autowire="true">
+            <tag name="kernel.event_subscriber" />
+            <argument type="service" id="legacy_bridge_bundle.legacy_kernel" />
+            <argument type="service" id="service_container" />
+        </service>
+
     </services>
 </container>

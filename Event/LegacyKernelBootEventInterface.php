@@ -2,7 +2,7 @@
 /**
  *
  */
-namespace Tactics\LegacyBridgeBundle\Kernel;
+namespace Tactics\LegacyBridgeBundle\Event;
 
 /**
  * Interface LegacyKernelInterface
