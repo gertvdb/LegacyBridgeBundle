@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services
+        https://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="legacy_bridge_bundle.router_listener.class">Tactics\LegacyBridgeBundle\EventListener\RouterListener</parameter>
+    </parameters>
+
+    <services>
+        <!--
+            For now we don't autowire to keep as close as possible to SF3/4 bundles.
+            Later on we can dive deeper into the autowire functionality.
+        -->
+
+        <service id="legacy_bridge_bundle.router_listener" class="%legacy_bridge_bundle.router_listener.class%">
+            <tag name="kernel.event_subscriber" />
+            <tag name="monolog.logger" channel="event" />
+            <argument type="service" id="legacy_bridge_bundle.legacy_kernel" />
+            <argument type="service" id="router_listener" />
+            <argument type="service" id="logger" on-invalid="ignore" />
+        </service>
+
+        <service id="legacy_bridge_bundle.router_listener" class="" autowire="false"/>
+    </services>
+</container>

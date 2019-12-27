@@ -1,0 +1,22 @@
+#
+# Travis CI
+#
+
+language: php
+
+# Build application on these php versions
+php:
+  - 7.2
+
+cache:
+  directories:
+  - ~/.composer
+
+install:
+  - COMPOSER_MEMORY_LIMIT=-1 composer install --no-interaction --prefer-source --dev
+
+script:
+  - composer run test
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)

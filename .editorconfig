@@ -1,0 +1,25 @@
+; This file is for unifying the coding style for different editors and IDEs.
+; More information at http://editorconfig.org
+
+root = true
+
+[*]
+# Change line ending to LF again after whole team is set up with correct line endings.
+#end_of_line = LF
+indent_style = space
+indent_size = 4
+insert_final_newline = true
+trim_trailing_whitespace = true
+# Change to utf-8 after migration to linux and fixes in code.
+charset = latin1
+
+[composer.json]
+indent_size = 4
+
+[*.bat]
+end_of_line = crlf
+
+[*.yml]
+indent_style = space
+indent_size = 2
+
