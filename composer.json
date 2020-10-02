@@ -9,7 +9,7 @@
     ],
     "repositories": [],
     "require": {
-        "symfony/symfony": "^5.0"
+        "symfony/symfony": "^5.1"
     },
     "require-dev": {
         "jakub-onderka/php-parallel-lint": "^1.0",
