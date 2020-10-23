@@ -2,6 +2,7 @@
 
 namespace Tactics\LegacyBridgeBundle\EventListener;
 
+use Exception;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\FinishRequestEvent;
@@ -35,13 +36,12 @@ class RouterListener implements EventSubscriberInterface
      */
     protected $logger;
 
-
     /**
      * @param SymfonyRouterListener $routerListener
-     * @param LegacyKernelInterface $legacyKernel
-     * @param LoggerInterface       $logger
+     * @param LegacyKernelInterface|null $legacyKernel
+     * @param LoggerInterface|null $logger
      */
-    public function __construct(SymfonyRouterListener $routerListener, LegacyKernelInterface $legacyKernel=null, LoggerInterface $logger=null)
+    public function __construct(SymfonyRouterListener $routerListener, LegacyKernelInterface $legacyKernel=NULL, LoggerInterface $logger=NULL)
     {
         $this->legacyKernel   = $legacyKernel;
         $this->routerListener = $routerListener;
@@ -49,12 +49,11 @@ class RouterListener implements EventSubscriberInterface
 
     }//end __construct()
 
-
     /**
-     * @param \Symfony\Component\HttpKernel\Event\RequestEvent $event
+     * @param RequestEvent $event
      *
-     * @return \Symfony\Component\HttpKernel\Event\RequestEvent
-     * @throws \Exception
+     * @return RequestEvent
+     * @throws Exception
      */
     public function onKernelRequest(RequestEvent $event)
     {
@@ -63,30 +62,26 @@ class RouterListener implements EventSubscriberInterface
             $this->routerListener->onKernelRequest($event);
         } catch (NotFoundHttpException $e) {
             // Optionally we log the request that go through the legacy controller.
-            if ($this->logger !== null) {
+            if ($this->logger !== NULL) {
                 $message = 'Request handled by the '.$this->legacyKernel->getName().' kernel.';
                 $this->logger->info($message);
             }
 
-            if ($this->legacyKernel !== null) {
-
+            if ($this->legacyKernel !== NULL) {
                 // When the request could not be dispatched through symfony 5
                 // we fallback to our legacy kernel to dispatch the request.
                 $response = $this->legacyKernel->handle(
                     $event->getRequest(),
                     $event->getRequestType(),
-                    true
+                    TRUE
                 );
 
-                if ($response->getStatusCode() !== 404) {
-                    $event->setResponse($response);
-                    return $event;
-                }
+                $event->setResponse($response);
+                return $event;
             }
-        }
+        }//end try
 
     }//end onKernelRequest()
-
 
     /**
      * @param FinishRequestEvent $event
@@ -96,7 +91,6 @@ class RouterListener implements EventSubscriberInterface
         $this->routerListener->onKernelFinishRequest($event);
 
     }//end onKernelFinishRequest()
-
 
     /**
      * @{inheritdoc}
@@ -124,6 +118,5 @@ class RouterListener implements EventSubscriberInterface
         return $listeners;
 
     }//end getSubscribedEvents()
-
 
 }//end class
