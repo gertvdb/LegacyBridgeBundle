@@ -11,6 +11,7 @@ use Tactics\LegacyBridgeBundle\Kernel\LegacyKernelInterface;
  */
 interface LegacyClassLoaderInterface
 {
+
     /**
      * Autoload the legacy code.
      *
@@ -31,4 +32,5 @@ interface LegacyClassLoaderInterface
      * @param LegacyKernelInterface $kernel
      */
     public function setKernel(LegacyKernelInterface $kernel);
+
 }

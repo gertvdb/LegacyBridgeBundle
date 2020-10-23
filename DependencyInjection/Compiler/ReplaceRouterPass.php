@@ -13,7 +13,6 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 class ReplaceRouterPass implements CompilerPassInterface
 {
 
-
     /**
      * Process container.
      *
@@ -25,12 +24,11 @@ class ReplaceRouterPass implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container)
     {
-
         // When our router service is defined we replace the default router listener.
-        if ($container->hasDefinition('legacy_bridge_bundle.router_listener') === true) {
+        if ($container->hasDefinition('legacy_bridge_bundle.router_listener') === TRUE) {
             // First get te default router_listener.
             $routerListener = $container->getDefinition('router_listener');
-            
+
             // Then get our custom route listener and inject the default route listener.
             $definition = $container->getDefinition('legacy_bridge_bundle.router_listener');
             $definition->replaceArgument(0, $routerListener);
@@ -40,6 +38,5 @@ class ReplaceRouterPass implements CompilerPassInterface
         }
 
     }//end process()
-
 
 }//end class

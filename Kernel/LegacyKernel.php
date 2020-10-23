@@ -11,10 +11,11 @@ use Tactics\LegacyBridgeBundle\Autoload\LegacyClassLoaderInterface;
  */
 abstract class LegacyKernel implements LegacyKernelInterface
 {
+
     /**
      * @var bool
      */
-    protected $isBooted = false;
+    protected $isBooted = FALSE;
 
     /**
      * @var string
@@ -37,6 +38,7 @@ abstract class LegacyKernel implements LegacyKernelInterface
     public function isBooted()
     {
         return $this->isBooted;
+
     }
 
     /**
@@ -45,6 +47,7 @@ abstract class LegacyKernel implements LegacyKernelInterface
     public function getRootDir()
     {
         return $this->rootDir;
+
     }
 
     /**
@@ -53,6 +56,7 @@ abstract class LegacyKernel implements LegacyKernelInterface
     public function setRootDir($rootDir)
     {
         $this->rootDir = $rootDir;
+
     }
 
     /**
@@ -62,6 +66,7 @@ abstract class LegacyKernel implements LegacyKernelInterface
     {
         $classLoader->setKernel($this);
         $this->classLoader = $classLoader;
+
     }
 
     /**
@@ -70,5 +75,7 @@ abstract class LegacyKernel implements LegacyKernelInterface
     public function setOptions(array $options = array())
     {
         $this->options = $options;
+
     }
+
 }

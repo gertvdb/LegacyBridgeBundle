@@ -17,7 +17,6 @@ use Tactics\LegacyBridgeBundle\Autoload\LegacyClassLoaderInterface;
 interface LegacyKernelInterface extends HttpKernelInterface
 {
 
-
     /**
      * Boot the legacy kernel.
      *
@@ -29,14 +28,12 @@ interface LegacyKernelInterface extends HttpKernelInterface
      */
     public function boot(ContainerInterface $container);
 
-
     /**
      * Check whether the legacy kernel is already booted or not.
      *
      * @return boolean
      */
     public function isBooted();
-
 
     /**
      * Return the directory where the legacy app lives.
@@ -45,14 +42,12 @@ interface LegacyKernelInterface extends HttpKernelInterface
      */
     public function getRootDir();
 
-
     /**
      * Set the directory where the legacy app lives.
      *
      * @param string $rootDir
      */
     public function setRootDir($rootDir);
-
 
     /**
      * Set the class loader to use to load the legacy project.
@@ -61,7 +56,6 @@ interface LegacyKernelInterface extends HttpKernelInterface
      */
     public function setClassLoader(LegacyClassLoaderInterface $classLoader);
 
-
     /**
      * Return the name of the kernel.
      *
@@ -69,13 +63,11 @@ interface LegacyKernelInterface extends HttpKernelInterface
      */
     public function getName();
 
-
     /**
      * Set kernel options
      *
      * @param array $options
      */
     public function setOptions(array $options=[]);
-
 
 }//end interface

@@ -16,7 +16,6 @@ use Symfony\Component\DependencyInjection\Reference;
 class KernelConfigurationPass implements CompilerPassInterface
 {
 
-
     /**
      * You can modify the container here before it is dumped to PHP code.
      *
@@ -26,32 +25,31 @@ class KernelConfigurationPass implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container)
     {
-        
         $kernelId      = $container->getParameter('legacy_bridge_bundle.legacy_kernel.id');
         $kernelOptions = $container->getParameter('legacy_bridge_bundle.legacy_kernel.options');
         $classLoaderId = $this->getClassLoaderId($container);
         $container->setAlias('legacy_bridge_bundle.legacy_kernel', $kernelId);
 
-        if (empty($kernelOptions) === false) {
+        if (empty($kernelOptions) === FALSE) {
             $definition = $container->findDefinition($kernelId);
             $definition->addMethodCall('setOptions', [$kernelOptions]);
         }
 
-        if ($classLoaderId !== null) {
+        if ($classLoaderId !== NULL) {
             $definition = $container->findDefinition($kernelId);
             $definition->addMethodCall('setClassLoader', [new Reference($classLoaderId)]);
         }
+
     }
 
-    private function getClassLoaderId(ContainerBuilder $container) {
-
+    private function getClassLoaderId(ContainerBuilder $container)
+    {
         try {
             return $container->getParameter('legacy_bridge_bundle.legacy_kernel.class_loader.id');
         } catch (\Exception $exception) {
-            return null;
+            return NULL;
         }
 
     }//end getClassLoaderId()
-
 
 }

@@ -15,6 +15,7 @@ use Symfony\Contracts\EventDispatcher\Event;
  */
 class LegacyKernelBootEvent extends Event
 {
+
     /**
      * @var Request
      */
@@ -33,6 +34,7 @@ class LegacyKernelBootEvent extends Event
     {
         $this->request = $request;
         $this->options = $options;
+
     }
 
     /**
@@ -41,6 +43,7 @@ class LegacyKernelBootEvent extends Event
     public function getRequest()
     {
         return $this->request;
+
     }
 
     /**
@@ -49,6 +52,7 @@ class LegacyKernelBootEvent extends Event
     public function getOptions()
     {
         return $this->options;
+
     }
 
     /**
@@ -57,6 +61,7 @@ class LegacyKernelBootEvent extends Event
     public function setOptions($options)
     {
         $this->options = $options;
+
     }
 
     /**
@@ -66,6 +71,7 @@ class LegacyKernelBootEvent extends Event
     public function setOption($name, $value)
     {
         $this->options[$name] = $value;
+
     }
 
 }

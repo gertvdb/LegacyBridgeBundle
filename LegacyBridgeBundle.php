@@ -28,9 +28,10 @@ class LegacyBridgeBundle extends Bundle
     /**
      * @param ClassLoader $loader
      */
-    public function __construct(ClassLoader $loader = null)
+    public function __construct(ClassLoader $loader = NULL)
     {
         $this->loader = $loader;
+
     }
 
     /**
@@ -39,16 +40,19 @@ class LegacyBridgeBundle extends Bundle
     public function build(ContainerBuilder $container)
     {
         // The loader can be null when clearing the cache.
-        if (null !== $this->loader) {
+        if (NULL !== $this->loader) {
             $container->addCompilerPass(new LoaderInjectorPass($this->loader));
         }
 
         $container->addCompilerPass(new KernelConfigurationPass());
         $container->addCompilerPass(new ReplaceRouterPass());
+
     }
 
     public function getContainerExtension()
     {
         return new LegacyBridgeBundleExtension();
+
     }
+
 }

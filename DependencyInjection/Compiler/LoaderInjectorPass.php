@@ -28,6 +28,7 @@ class LoaderInjectorPass implements CompilerPassInterface
     public function __construct(ClassLoader $loader)
     {
         $this->loader = $loader;
+
     }
 
     /**
@@ -40,6 +41,7 @@ class LoaderInjectorPass implements CompilerPassInterface
         foreach ($taggedServices as $id => $attributes) {
             $container->getDefinition($id)->addMethodCall('setLoader', [new Reference('composer.loader')]);
         }
+
     }
 
 }
