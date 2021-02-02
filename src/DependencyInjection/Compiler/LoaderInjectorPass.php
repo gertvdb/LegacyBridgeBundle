@@ -1,8 +1,6 @@
 <?php
-/**
- * Loader injector pass
- */
-namespace Tactics\LegacyBridgeBundle\DependencyInjection\Compiler;
+
+namespace gertvdb\LegacyBridgeBundle\DependencyInjection\Compiler;
 
 use Composer\Autoload\ClassLoader;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
@@ -12,13 +10,13 @@ use Symfony\Component\DependencyInjection\Reference;
 /**
  * Class LoaderInjectorPass
  *
- * @package Tactics\LegacyBridgeBundle\DependencyInjection\Compiler
+ * @package gertvdb\LegacyBridgeBundle\DependencyInjection\Compiler
  */
 class LoaderInjectorPass implements CompilerPassInterface
 {
 
     /**
-     * @var \Composer\Autoload\ClassLoader
+     * @var ClassLoader
      */
     private $loader;
 
@@ -43,5 +41,6 @@ class LoaderInjectorPass implements CompilerPassInterface
         }
 
     }
+
 
 }

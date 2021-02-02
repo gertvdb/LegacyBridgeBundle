@@ -1,6 +1,6 @@
 <?php
 
-namespace Tactics\LegacyBridgeBundle\EventListener;
+namespace gertvdb\LegacyBridgeBundle\EventListener;
 
 use Exception;
 use Psr\Log\LoggerInterface;
@@ -9,9 +9,8 @@ use Symfony\Component\HttpKernel\Event\FinishRequestEvent;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\HttpKernel\EventListener\RouterListener as SymfonyRouterListener;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Symfony\Component\HttpKernel\HttpKernel;
 use Symfony\Component\HttpKernel\KernelEvents;
-use Tactics\LegacyBridgeBundle\Kernel\LegacyKernelInterface;
+use gertvdb\LegacyBridgeBundle\Kernel\LegacyKernelInterface;
 
 /**
  * RouterListener delegates the request handling to the Symfony router listener.

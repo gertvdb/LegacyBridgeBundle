@@ -1,10 +1,8 @@
 <?php
-/**
- *
- */
-namespace Tactics\LegacyBridgeBundle\Kernel;
 
-use Tactics\LegacyBridgeBundle\Autoload\LegacyClassLoaderInterface;
+namespace gertvdb\LegacyBridgeBundle\Kernel;
+
+use gertvdb\LegacyBridgeBundle\Autoload\LegacyClassLoaderInterface;
 
 /**
  * LegacyKernel

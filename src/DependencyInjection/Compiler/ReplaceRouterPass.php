@@ -1,8 +1,6 @@
 <?php
-/**
- * Replace router pass
- */
-namespace Tactics\LegacyBridgeBundle\DependencyInjection\Compiler;
+
+namespace gertvdb\LegacyBridgeBundle\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -12,6 +10,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
  */
 class ReplaceRouterPass implements CompilerPassInterface
 {
+
 
     /**
      * Process container.
@@ -38,5 +37,6 @@ class ReplaceRouterPass implements CompilerPassInterface
         }
 
     }//end process()
+
 
 }//end class

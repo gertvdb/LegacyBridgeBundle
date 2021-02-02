@@ -9,38 +9,40 @@
     ],
     "repositories": [],
     "require": {
+        "php": ">=7.4",
         "symfony/symfony": "^5.1"
     },
     "require-dev": {
-        "jakub-onderka/php-parallel-lint": "^1.0",
-        "phpunit/phpunit": "^8.5",
-        "squizlabs/php_codesniffer": "^3.5"
+        "phpstan/phpstan": "0.12.69",
+        "symplify/easy-coding-standard": "^9.0",
+        "symplify/phpstan-extensions": "^9.0",
+        "symplify/phpstan-php-config": "^9.0",
+        "rector/rector": "^0.9.18",
+        "phpunit/phpunit": "^9.5"
     },
     "autoload": {
         "psr-4": {
-            "Tactics\\LegacyBridgeBundle\\": ""
+            "gertvdb\\LegacyBridgeBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "gertvdb\\LegacyBridgeBundle\\Tests\\": "tests"
         }
     },
     "scripts": {
-        "phpcs": [
-            "vendor/bin/phpcs"
-        ],
-        "phpcbf": [
-            "vendor/bin/phpcbf"
+        "ecs": [
+            "./vendor/bin/ecs check --config ecs.php --fix"
         ],
         "phpunit": [
-            "vendor/bin/phpunit --configuration=phpunit.xml --colors=always --testdox --coverage-clover build/logs/clover.xml"
+            "./vendor/bin/phpunit"
         ],
-        "codingStandards": [
-            "@phpcs",
-            "@phpcbf"
+        "phpstan": [
+            "vendor/symplify/phpstan-php-config/bin/phpstan-php-config convert phpstan.php",
+            "vendor/bin/phpstan analyse --ansi --error-format symplify"
         ],
-        "test": [
-            "@phpunit"
-        ],
-        "build": [
-            "@codingStandards",
-            "@phpunit"
+        "rector": [
+            "./vendor/bin/rector process --config rector.php"
         ]
     }
 }

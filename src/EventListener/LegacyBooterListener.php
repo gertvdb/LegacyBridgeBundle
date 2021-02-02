@@ -1,14 +1,12 @@
 <?php
-/**
- *
- */
-namespace Tactics\LegacyBridgeBundle\EventListener;
+
+namespace gertvdb\LegacyBridgeBundle\EventListener;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
-use Tactics\LegacyBridgeBundle\Kernel\LegacyKernelInterface;
+use gertvdb\LegacyBridgeBundle\Kernel\LegacyKernelInterface;
 
 /**
  * Class LegacyBooterListener
@@ -17,7 +15,7 @@ use Tactics\LegacyBridgeBundle\Kernel\LegacyKernelInterface;
  * and else we boot it and pass it the container.
  * The only downside here is that we boot symfony 2 times.
  *
- * @package Tactics\LegacyBridgeBundle\EventListener
+ * @package gertvdb\LegacyBridgeBundle\EventListener
  */
 class LegacyBooterListener implements EventSubscriberInterface
 {
@@ -36,7 +34,6 @@ class LegacyBooterListener implements EventSubscriberInterface
      */
     private $container;
 
-
     /**
      * LegacyBooterListener constructor.
      *
@@ -46,12 +43,12 @@ class LegacyBooterListener implements EventSubscriberInterface
     public function __construct(
         LegacyKernelInterface $kernel,
         ContainerInterface $container
-    ) {
+    )
+    {
         $this->kernel    = $kernel;
         $this->container = $container;
 
     }//end __construct()
-
 
     /**
      * On kernel request
@@ -65,14 +62,11 @@ class LegacyBooterListener implements EventSubscriberInterface
      */
     public function onKernelRequest(RequestEvent $event)
     {
-
-
-        if ($this->kernel->isBooted() === false) {
+        if ($this->kernel->isBooted() === FALSE) {
             $this->kernel->boot($this->container);
         }
 
     }//end onKernelRequest()
-
 
     /**
      * Returns an array of event names this subscriber wants to listen to.

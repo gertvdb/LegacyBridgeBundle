@@ -1,17 +1,14 @@
 <?php
-/**
- *
- */
-namespace Tactics\LegacyBridgeBundle\Event;
 
-use Symfony\Component\EventDispatcher\GenericEvent;
+namespace gertvdb\LegacyBridgeBundle\Event;
+
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Contracts\EventDispatcher\Event;
 
 /**
  * Class LegacyKernelBootEvent
  *
- * @package Tactics\LegacyBridgeBundle\Event
+ * @package gertvdb\LegacyBridgeBundle\Event
  */
 class LegacyKernelBootEvent extends Event
 {
@@ -73,5 +70,6 @@ class LegacyKernelBootEvent extends Event
         $this->options[$name] = $value;
 
     }
+
 
 }

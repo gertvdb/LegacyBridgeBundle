@@ -1,16 +1,15 @@
 <?php
-/**
- *
- */
-namespace Tactics\LegacyBridgeBundle\Autoload;
 
-use Tactics\LegacyBridgeBundle\Kernel\LegacyKernelInterface;
+namespace gertvdb\LegacyBridgeBundle\Autoload;
+
+use gertvdb\LegacyBridgeBundle\Kernel\LegacyKernelInterface;
 
 /**
  * LegacyClassLoaderInterface
  */
 interface LegacyClassLoaderInterface
 {
+
 
     /**
      * Autoload the legacy code.
@@ -20,7 +19,7 @@ interface LegacyClassLoaderInterface
     public function autoload();
 
     /**
-     * Check whether the legacy is already autoloaded.
+     * Check whether the legacy kernel is already auto loaded.
      *
      * @return bool
      */
@@ -32,5 +31,6 @@ interface LegacyClassLoaderInterface
      * @param LegacyKernelInterface $kernel
      */
     public function setKernel(LegacyKernelInterface $kernel);
+
 
 }

@@ -1,0 +1,5 @@
+ahoyapi: v2
+commands:
+  composer:
+    cmd: docker-compose run -w /var/www/html composer composer "$@"
+    usage: Run Composer commands in the composer container.

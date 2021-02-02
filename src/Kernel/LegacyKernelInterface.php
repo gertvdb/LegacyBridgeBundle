@@ -1,18 +1,16 @@
 <?php
-/**
- *
- */
-namespace Tactics\LegacyBridgeBundle\Kernel;
 
+namespace gertvdb\LegacyBridgeBundle\Kernel;
+
+use RuntimeException;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
-use Symfony\Component\HttpKernel\KernelInterface;
-use Tactics\LegacyBridgeBundle\Autoload\LegacyClassLoaderInterface;
+use gertvdb\LegacyBridgeBundle\Autoload\LegacyClassLoaderInterface;
 
 /**
  * Interface LegacyKernelInterface
  *
- * @package Tactics\LegacyBridgeBundle\Kernel
+ * @package gertvdb\LegacyBridgeBundle\Kernel
  */
 interface LegacyKernelInterface extends HttpKernelInterface
 {
@@ -20,11 +18,10 @@ interface LegacyKernelInterface extends HttpKernelInterface
     /**
      * Boot the legacy kernel.
      *
-     * @throws \RuntimeException
-     *
      * @param  ContainerInterface $container
      *
      * @return mixed
+     * @throws RuntimeException
      */
     public function boot(ContainerInterface $container);
 

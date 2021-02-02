@@ -5,8 +5,8 @@
         https://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="legacy_bridge_bundle.router_listener.class">Tactics\LegacyBridgeBundle\EventListener\RouterListener</parameter>
-        <parameter key="legacy_bridge_bundle.legacy_booter_listener.class">Tactics\LegacyBridgeBundle\EventListener\LegacyBooterListener</parameter>
+        <parameter key="legacy_bridge_bundle.router_listener.class">gertvdb\LegacyBridgeBundle\EventListener\RouterListener</parameter>
+        <parameter key="legacy_bridge_bundle.legacy_booter_listener.class">gertvdb\LegacyBridgeBundle\EventListener\LegacyBooterListener</parameter>
     </parameters>
 
     <services>

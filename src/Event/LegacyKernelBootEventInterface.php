@@ -1,13 +1,11 @@
 <?php
-/**
- *
- */
-namespace Tactics\LegacyBridgeBundle\Event;
+
+namespace gertvdb\LegacyBridgeBundle\Event;
 
 /**
  * Interface LegacyKernelInterface
  *
- * @package Tactics\LegacyBridgeBundle\Kernel
+ * @package gertvdb\LegacyBridgeBundle\Kernel
  */
 interface LegacyKernelBootEventInterface
 {

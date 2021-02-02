@@ -2,20 +2,20 @@
 /**
  * Bridge bundle for legacy projects
  */
-namespace Tactics\LegacyBridgeBundle;
+namespace gertvdb\LegacyBridgeBundle;
 
 use Composer\Autoload\ClassLoader;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
-use Tactics\LegacyBridgeBundle\DependencyInjection\Compiler\KernelConfigurationPass;
-use Tactics\LegacyBridgeBundle\DependencyInjection\Compiler\LoaderInjectorPass;
-use Tactics\LegacyBridgeBundle\DependencyInjection\Compiler\ReplaceRouterPass;
-use Tactics\LegacyBridgeBundle\DependencyInjection\LegacyBridgeBundleExtension;
+use gertvdb\LegacyBridgeBundle\DependencyInjection\Compiler\KernelConfigurationPass;
+use gertvdb\LegacyBridgeBundle\DependencyInjection\Compiler\LoaderInjectorPass;
+use gertvdb\LegacyBridgeBundle\DependencyInjection\Compiler\ReplaceRouterPass;
+use gertvdb\LegacyBridgeBundle\DependencyInjection\LegacyBridgeBundleExtension;
 
 /**
  * Class LegacyBridgeBundle
  *
- * @package Tactics\LegacyBridgeBundle
+ * @package gertvdb\LegacyBridgeBundle
  */
 class LegacyBridgeBundle extends Bundle
 {

@@ -1,8 +1,7 @@
 <?php
 
-namespace Tactics\LegacyBridgeBundle\DependencyInjection;
+namespace gertvdb\LegacyBridgeBundle\DependencyInjection;
 
-use Symfony\Component\Config\Definition\Builder\NodeBuilder;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
@@ -11,6 +10,7 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
  */
 class Configuration implements ConfigurationInterface
 {
+
 
     /**
      * {@inheritDoc}
@@ -25,5 +25,6 @@ class Configuration implements ConfigurationInterface
         return $treeBuilder;
 
     }//end getConfigTreeBuilder()
+
 
 }//end class

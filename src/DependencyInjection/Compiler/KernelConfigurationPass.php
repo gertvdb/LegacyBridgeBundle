@@ -1,9 +1,8 @@
 <?php
-/**
- * Loader injector pass
- */
-namespace Tactics\LegacyBridgeBundle\DependencyInjection\Compiler;
 
+namespace gertvdb\LegacyBridgeBundle\DependencyInjection\Compiler;
+
+use Exception;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
@@ -11,10 +10,11 @@ use Symfony\Component\DependencyInjection\Reference;
 /**
  * Class KernelConfigurationPass
  *
- * @package Tactics\LegacyBridgeBundle\DependencyInjection\Compiler
+ * @package gertvdb\LegacyBridgeBundle\DependencyInjection\Compiler
  */
 class KernelConfigurationPass implements CompilerPassInterface
 {
+
 
     /**
      * You can modify the container here before it is dumped to PHP code.
@@ -46,10 +46,11 @@ class KernelConfigurationPass implements CompilerPassInterface
     {
         try {
             return $container->getParameter('legacy_bridge_bundle.legacy_kernel.class_loader.id');
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             return NULL;
         }
 
     }//end getClassLoaderId()
+
 
 }

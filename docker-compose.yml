@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  composer:
+    container_name: "legacy_bridge_bundle_composer"
+    environment:
+      COLUMNS: 80
+      PHP_FPM_GROUP: wodby
+      PHP_FPM_USER: wodby
+    image: "wodby/php:7.4-dev-4.17.0"
+    volumes:
+      - "./:/var/www/html"

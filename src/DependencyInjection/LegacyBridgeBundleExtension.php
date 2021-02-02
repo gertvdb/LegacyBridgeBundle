@@ -1,14 +1,10 @@
 <?php
 
-/**
- * SF5 bridge
- */
-namespace Tactics\LegacyBridgeBundle\DependencyInjection;
+namespace gertvdb\LegacyBridgeBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
-use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 
 /**
@@ -16,6 +12,7 @@ use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
  */
 class LegacyBridgeBundleExtension extends Extension
 {
+
 
     /**
      * Loads a specific configuration.
@@ -31,7 +28,7 @@ class LegacyBridgeBundleExtension extends Extension
     {
         $loader = new XmlFileLoader(
             $container,
-            new FileLocator(__DIR__.'/../Resources/config')
+            new FileLocator(__DIR__ . '/../Resources/config')
         );
         $loader->load('services.xml');
 
@@ -39,5 +36,6 @@ class LegacyBridgeBundleExtension extends Extension
         $container->register('composer.loader', 'Composer\Autoload\ClassLoader');
 
     }//end load()
+
 
 }
