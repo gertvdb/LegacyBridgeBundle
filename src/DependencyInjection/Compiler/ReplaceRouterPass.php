@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace gertvdb\LegacyBridgeBundle\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
