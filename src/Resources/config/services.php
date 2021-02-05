@@ -27,7 +27,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ->args([
             service('router_listener'),
             service('legacy_bridge_bundle.legacy_kernel'),
-            service('?logger')
+            service('logger')->nullOnInvalid()
         ]);
 
     $services->set('legacy_bridge_bundle.legacy_booter_listener', '%legacy_bridge_bundle.legacy_booter_listener.class%')
