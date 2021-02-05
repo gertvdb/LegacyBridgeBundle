@@ -32,7 +32,7 @@ class LegacyBridgeBundleExtension extends Extension
             $container,
             new FileLocator(__DIR__ . '/../Resources/config')
         );
-        $loader->load('services.xml');
+        $loader->load('services.php');
 
         // Register composer class loader.
         $container->register('composer.loader', 'Composer\Autoload\ClassLoader');
