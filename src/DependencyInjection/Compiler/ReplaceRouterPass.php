@@ -15,11 +15,9 @@ class ReplaceRouterPass implements CompilerPassInterface
 
 
     /**
-     * Process container.
-     *
      * You can modify the container here before it is dumped to PHP code.
      *
-     * @param ContainerBuilder $container The container builder.
+     * @param ContainerBuilder $container
      *
      * @return void
      */

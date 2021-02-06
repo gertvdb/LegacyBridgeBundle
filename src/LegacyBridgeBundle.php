@@ -24,12 +24,12 @@ class LegacyBridgeBundle extends Bundle
 {
 
     /**
-     * @var \Composer\Autoload\ClassLoader
+     * @var ?ClassLoader
      */
     private $loader;
 
     /**
-     * @param ClassLoader $loader
+     * @param ClassLoader|null $loader
      */
     public function __construct(ClassLoader $loader = NULL)
     {
@@ -38,13 +38,19 @@ class LegacyBridgeBundle extends Bundle
     }
 
     /**
-     * {@inheritdoc}
+     * Builds the bundle.
+     *
+     * It is only ever called once when the cache is empty.
+     *
+     * @param ContainerBuilder $container
+     *
+     * @return void
      */
     public function build(ContainerBuilder $container)
     {
         // The loader can be null when clearing the cache.
         if (NULL !== $this->loader) {
-            $container->addCompilerPass(new LoaderInjectorPass($this->loader));
+            $container->addCompilerPass(new LoaderInjectorPass());
         }
 
         $container->addCompilerPass(new KernelConfigurationPass());
@@ -52,7 +58,12 @@ class LegacyBridgeBundle extends Bundle
 
     }
 
-    public function getContainerExtension()
+    /**
+     * Get the containerExtension.
+     *
+     * @return LegacyBridgeBundleExtension
+     */
+    public function getContainerExtension(): LegacyBridgeBundleExtension
     {
         return new LegacyBridgeBundleExtension();
 

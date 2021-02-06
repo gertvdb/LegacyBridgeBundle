@@ -32,26 +32,30 @@ interface LegacyKernelInterface extends HttpKernelInterface
      *
      * @return boolean
      */
-    public function isBooted();
+    public function isBooted(): bool;
 
     /**
      * Return the directory where the legacy app lives.
      *
      * @return string
      */
-    public function getRootDir();
+    public function getRootDir(): string;
 
     /**
      * Set the directory where the legacy app lives.
      *
      * @param string $rootDir
+     *
+     * @return void
      */
-    public function setRootDir($rootDir);
+    public function setRootDir(string $rootDir);
 
     /**
      * Set the class loader to use to load the legacy project.
      *
      * @param LegacyClassLoaderInterface $classLoader
+     *
+     * @return void
      */
     public function setClassLoader(LegacyClassLoaderInterface $classLoader);
 
@@ -60,12 +64,14 @@ interface LegacyKernelInterface extends HttpKernelInterface
      *
      * @return string
      */
-    public function getName();
+    public function getName(): string;
 
     /**
      * Set kernel options
      *
      * @param array $options
+     *
+     * @return void
      */
     public function setOptions(array $options=[]);
 

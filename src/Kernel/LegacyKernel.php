@@ -35,7 +35,7 @@ abstract class LegacyKernel implements LegacyKernelInterface
     /**
      * {@inheritdoc}
      */
-    public function isBooted()
+    public function isBooted(): bool
     {
         return $this->isBooted;
 
@@ -44,7 +44,7 @@ abstract class LegacyKernel implements LegacyKernelInterface
     /**
      * {@inheritdoc}
      */
-    public function getRootDir()
+    public function getRootDir(): string
     {
         return $this->rootDir;
 
@@ -53,7 +53,7 @@ abstract class LegacyKernel implements LegacyKernelInterface
     /**
      * {@inheritdoc}
      */
-    public function setRootDir($rootDir)
+    public function setRootDir(string $rootDir)
     {
         $this->rootDir = $rootDir;
 

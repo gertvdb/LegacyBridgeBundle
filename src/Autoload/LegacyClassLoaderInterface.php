@@ -25,12 +25,14 @@ interface LegacyClassLoaderInterface
      *
      * @return bool
      */
-    public function isAutoloaded();
+    public function isAutoloaded(): bool;
 
     /**
      * Inject the kernel into the class loader.
      *
      * @param LegacyKernelInterface $kernel
+     *
+     * @return void
      */
     public function setKernel(LegacyKernelInterface $kernel);
 

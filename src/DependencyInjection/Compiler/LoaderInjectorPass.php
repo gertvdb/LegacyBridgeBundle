@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace gertvdb\LegacyBridgeBundle\DependencyInjection\Compiler;
 
-use Composer\Autoload\ClassLoader;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
@@ -17,22 +16,13 @@ use Symfony\Component\DependencyInjection\Reference;
 class LoaderInjectorPass implements CompilerPassInterface
 {
 
-    /**
-     * @var ClassLoader
-     */
-    private $loader;
 
     /**
-     * @param ClassLoader $loader
-     */
-    public function __construct(ClassLoader $loader)
-    {
-        $this->loader = $loader;
-
-    }
-
-    /**
-     * {@inheritdoc}
+     * You can modify the container here before it is dumped to PHP code.
+     *
+     * @param ContainerBuilder $container
+     *
+     * @return void
      */
     public function process(ContainerBuilder $container)
     {

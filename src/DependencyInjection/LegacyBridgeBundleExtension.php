@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace gertvdb\LegacyBridgeBundle\DependencyInjection;
 
+use Composer\Autoload\ClassLoader;
+use Exception;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
@@ -22,7 +24,7 @@ class LegacyBridgeBundleExtension extends Extension
      * @param array            $configs   The config array
      * @param ContainerBuilder $container The container builder
      *
-     * @throws \Exception
+     * @throws Exception
      *
      * @return void
      */
@@ -35,7 +37,7 @@ class LegacyBridgeBundleExtension extends Extension
         $loader->load('services.php');
 
         // Register composer class loader.
-        $container->register('composer.loader', 'Composer\Autoload\ClassLoader');
+        $container->register('composer.loader', ClassLoader::class);
 
     }//end load()
 

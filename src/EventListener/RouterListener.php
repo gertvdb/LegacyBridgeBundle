@@ -85,7 +85,11 @@ class RouterListener implements EventSubscriberInterface
     }//end onKernelRequest()
 
     /**
+     * On kernel finished event
+     *
      * @param FinishRequestEvent $event
+     *
+     * @return void
      */
     public function onKernelFinishRequest(FinishRequestEvent $event)
     {
@@ -94,9 +98,11 @@ class RouterListener implements EventSubscriberInterface
     }//end onKernelFinishRequest()
 
     /**
-     * @{inheritdoc}
+     * Get the subscribed events.
+     *
+     * @return array
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         $listeners = [
             KernelEvents::REQUEST => [

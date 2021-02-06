@@ -9,7 +9,7 @@ use Symplify\PHPStanPHPConfig\ValueObject\Option;
 return static function (ContainerConfigurator $containerConfigurator): void {
     $parameters = $containerConfigurator->parameters();
 
-    $parameters->set(Option::LEVEL, Level::LEVEL_0);
+    $parameters->set(Option::LEVEL, Level::LEVEL_1);
 
     $parameters->set(
         Option::PATHS,
