@@ -25,7 +25,7 @@ class LegacyKernelBootEvent extends Event
     /**
      * The legacy kernel options.
      *
-     * @var array
+     * @var array<mixed>
      */
     protected $options;
 
@@ -33,9 +33,9 @@ class LegacyKernelBootEvent extends Event
      * LegacyKernelBootEvent constructor.
      *
      * @param Request $request
-     * @param array $options
+     * @param array<mixed> $options
      */
-    public function __construct(Request $request, array $options = array())
+    public function __construct(Request $request, array $options = [])
     {
         $this->request = $request;
         $this->options = $options;
@@ -56,7 +56,7 @@ class LegacyKernelBootEvent extends Event
     /**
      * Get options.
      *
-     * @return array
+     * @return array<mixed>
      */
     public function getOptions(): array
     {
@@ -67,7 +67,7 @@ class LegacyKernelBootEvent extends Event
     /**
      * Set options.
      *
-     * @param array $options
+     * @param array<mixed> $options
      *
      * @return void
      */

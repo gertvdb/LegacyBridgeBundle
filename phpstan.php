@@ -9,7 +9,7 @@ use Symplify\PHPStanPHPConfig\ValueObject\Option;
 return static function (ContainerConfigurator $containerConfigurator): void {
     $parameters = $containerConfigurator->parameters();
 
-    $parameters->set(Option::LEVEL, Level::LEVEL_1);
+    $parameters->set(Option::LEVEL, Level::LEVEL_MAX);
 
     $parameters->set(
         Option::PATHS,
@@ -24,5 +24,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 
     $containerConfigurator->import(__DIR__ . '/vendor/phpstan/phpstan/conf/bleedingEdge.neon');
     $containerConfigurator->import(__DIR__ . '/vendor/symplify/phpstan-extensions/config/config.neon');
+
 
 };

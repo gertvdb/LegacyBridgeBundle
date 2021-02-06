@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use gertvdb\LegacyBridgeBundle\Configuration\Option;
+use gertvdb\LegacyBridgeBundle\EventListener\BridgeRouterListener;
 use gertvdb\LegacyBridgeBundle\EventListener\LegacyBooterListener;
-use gertvdb\LegacyBridgeBundle\EventListener\RouterListener;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
 
@@ -15,7 +15,7 @@ use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
 return static function (ContainerConfigurator $containerConfigurator): void {
     $parameters = $containerConfigurator->parameters();
 
-    $parameters->set(Option::OPTION_ROUTE_LISTENER_CLASS, RouterListener::class);
+    $parameters->set(Option::OPTION_ROUTE_LISTENER_CLASS, BridgeRouterListener::class);
     $parameters->set(Option::OPTION_BOOTER_LISTENER_CLASS, LegacyBooterListener::class);
 
     $services = $containerConfigurator->services();

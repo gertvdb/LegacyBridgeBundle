@@ -21,7 +21,7 @@ class LegacyBridgeBundleExtension extends Extension
     /**
      * Loads a specific configuration.
      *
-     * @param array            $configs   The config array
+     * @param array<mixed>     $configs   The config array
      * @param ContainerBuilder $container The container builder
      *
      * @throws Exception

@@ -69,7 +69,7 @@ interface LegacyKernelInterface extends HttpKernelInterface
     /**
      * Set kernel options
      *
-     * @param array $options
+     * @param array<mixed> $options
      *
      * @return void
      */

@@ -9,7 +9,7 @@ use Psr\Log\LoggerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\FinishRequestEvent;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
-use Symfony\Component\HttpKernel\EventListener\RouterListener as SymfonyRouterListener;
+use Symfony\Component\HttpKernel\EventListener\RouterListener;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\KernelEvents;
 use gertvdb\LegacyBridgeBundle\Kernel\LegacyKernelInterface;
@@ -19,11 +19,11 @@ use gertvdb\LegacyBridgeBundle\Kernel\LegacyKernelInterface;
  * If the later does not match any controller, then this listener catches the NotFoundHttpException
  * and tells the wrapper to handle the request instead.
  */
-class RouterListener implements EventSubscriberInterface
+class BridgeRouterListener implements EventSubscriberInterface
 {
 
     /**
-     * @var LegacyKernelInterface
+     * @var ?LegacyKernelInterface
      */
     protected $legacyKernel;
 
@@ -33,16 +33,16 @@ class RouterListener implements EventSubscriberInterface
     protected $routerListener;
 
     /**
-     * @var LoggerInterface
+     * @var ?LoggerInterface
      */
     protected $logger;
 
     /**
-     * @param SymfonyRouterListener $routerListener
+     * @param RouterListener $routerListener
      * @param LegacyKernelInterface|null $legacyKernel
      * @param LoggerInterface|null $logger
      */
-    public function __construct(SymfonyRouterListener $routerListener, LegacyKernelInterface $legacyKernel=NULL, LoggerInterface $logger=NULL)
+    public function __construct(RouterListener $routerListener, ?LegacyKernelInterface $legacyKernel=NULL, ?LoggerInterface $logger=NULL)
     {
         $this->legacyKernel   = $legacyKernel;
         $this->routerListener = $routerListener;
@@ -53,7 +53,7 @@ class RouterListener implements EventSubscriberInterface
     /**
      * @param RequestEvent $event
      *
-     * @return RequestEvent
+     * @return void
      * @throws Exception
      */
     public function onKernelRequest(RequestEvent $event)
@@ -62,13 +62,14 @@ class RouterListener implements EventSubscriberInterface
             // Try to dispatch the kernel event via symfony 5.
             $this->routerListener->onKernelRequest($event);
         } catch (NotFoundHttpException $e) {
-            // Optionally we log the request that go through the legacy controller.
-            if ($this->logger !== NULL) {
-                $message = 'Request handled by the '.$this->legacyKernel->getName().' kernel.';
-                $this->logger->info($message);
-            }
-
             if ($this->legacyKernel !== NULL) {
+
+                // Optionally we log the request that go through the legacy controller.
+                if ($this->logger !== NULL) {
+                    $message = 'Request handled by the '.$this->legacyKernel->getName().' kernel.';
+                    $this->logger->info($message);
+                }
+
                 // When the request could not be dispatched through symfony 5
                 // we fallback to our legacy kernel to dispatch the request.
                 $response = $this->legacyKernel->handle(
@@ -78,7 +79,6 @@ class RouterListener implements EventSubscriberInterface
                 );
 
                 $event->setResponse($response);
-                return $event;
             }
         }//end try
 
@@ -100,7 +100,7 @@ class RouterListener implements EventSubscriberInterface
     /**
      * Get the subscribed events.
      *
-     * @return array
+     * @return array<mixed>
      */
     public static function getSubscribedEvents(): array
     {

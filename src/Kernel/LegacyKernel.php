@@ -28,7 +28,7 @@ abstract class LegacyKernel implements LegacyKernelInterface
     protected $classLoader;
 
     /**
-     * @var array
+     * @var array<mixed>
      */
     protected $options;
 
