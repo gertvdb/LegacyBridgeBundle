@@ -1,6 +1,7 @@
 {
     "name": "gertvdb/legacy-bridge-bundle",
     "description": "bridge symfony 5",
+    "license": "MIT",
     "authors": [
         {
             "name": "Gert van den Buijs",
@@ -32,8 +33,11 @@
         }
     },
     "scripts": {
-        "ecs": [
+        "ecs-fix": [
             "./vendor/bin/ecs check --config ecs.php --fix"
+        ],
+        "ecs": [
+            "./vendor/bin/ecs check --config ecs.php"
         ],
         "phpunit": [
             "./vendor/bin/phpunit"
