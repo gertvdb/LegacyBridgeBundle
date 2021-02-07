@@ -63,7 +63,6 @@ class BridgeRouterListener implements EventSubscriberInterface
             $this->routerListener->onKernelRequest($event);
         } catch (NotFoundHttpException $e) {
             if ($this->legacyKernel !== NULL) {
-
                 // Optionally we log the request that go through the legacy controller.
                 if ($this->logger !== NULL) {
                     $message = 'Request handled by the '.$this->legacyKernel->getName().' kernel.';
@@ -125,5 +124,6 @@ class BridgeRouterListener implements EventSubscriberInterface
         return $listeners;
 
     }//end getSubscribedEvents()
+
 
 }//end class
