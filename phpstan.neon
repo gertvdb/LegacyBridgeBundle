@@ -1,0 +1,16 @@
+includes:
+    - vendor/phpstan/phpstan/conf/bleedingEdge.neon
+    - vendor/symplify/phpstan-extensions/config/config.neon
+
+parameters:
+    level: max
+    paths:
+        - src
+        - tests
+
+    reportUnmatchedIgnoredErrors: false
+    parallel:
+        maximumNumberOfProcesses: 6
+
+    ignoreErrors:
+        - "#Call to an undefined method Symfony\\Component\\Config\\Definition\\Builder\\NodeDefinition\\:\\:children\\(\\)#"
