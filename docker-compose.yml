@@ -7,6 +7,6 @@ services:
       COLUMNS: 80
       PHP_FPM_GROUP: wodby
       PHP_FPM_USER: wodby
-    image: "wodby/php:7.4-dev-4.17.0"
+    image: wodby/php:8.0-dev-4.27.0
     volumes:
       - "./:/var/www/html"

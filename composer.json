@@ -10,15 +10,14 @@
     ],
     "repositories": [],
     "require": {
-        "php": ">=7.4",
-        "symfony/symfony": "^5.3"
+        "php": ">=8.0",
+        "symfony/symfony": "^6.0"
     },
     "require-dev": {
-        "phpstan/phpstan": "0.12.69",
-        "symplify/easy-coding-standard": "^9.0",
-        "symplify/phpstan-extensions": "^9.0",
-        "rector/rector": "^0.9.18",
-        "phpunit/phpunit": "^9.5"
+        "roave/security-advisories": "dev-latest",
+        "phpunit/phpunit": "^9.5",
+        "rector/rector": "0.12.9",
+        "symplify/easy-coding-standard": "10.0.6"
     },
     "autoload": {
         "psr-4": {
