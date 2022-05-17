@@ -1,16 +1,18 @@
 includes:
     - vendor/phpstan/phpstan/conf/bleedingEdge.neon
-    - vendor/symplify/phpstan-extensions/config/config.neon
 
 parameters:
-    level: max
-    paths:
-        - src
-        - tests
-
+    level: 0
     reportUnmatchedIgnoredErrors: false
+
     parallel:
         maximumNumberOfProcesses: 6
 
-    ignoreErrors:
-        - "#Call to an undefined method Symfony\\Component\\Config\\Definition\\Builder\\NodeDefinition\\:\\:children\\(\\)#"
+    excludePaths:
+        - lib/model/map
+        - lib/model/om
+        - src/Kinderopvang/Core/Bridge/Transformer/LegacyUserTransformer
+
+    paths:
+        - src
+        - tests
