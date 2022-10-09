@@ -11,7 +11,12 @@
     "repositories": [],
     "require": {
         "php": ">=8.1",
-        "symfony/symfony": "^6.0.8"
+        "symfony/dependency-injection": "^6.1",
+        "symfony/http-kernel": "^6.1",
+        "symfony/config": "^6.1",
+        "symfony/http-foundation": "^6.1",
+        "symfony/contracts": "^3.1",
+        "symfony/event-dispatcher": "^6.1"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest",
