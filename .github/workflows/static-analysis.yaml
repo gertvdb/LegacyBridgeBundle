@@ -28,4 +28,4 @@ jobs:
             -   run: git --version
             -   run: composer clearcache
             -   run: composer install --no-progress --ansi
-            -   run: composer phpstan
+            -   run: composer phpstan-cli

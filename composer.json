@@ -45,7 +45,10 @@
             "./vendor/bin/phpunit"
         ],
         "phpstan": [
-            "vendor/bin/phpstan analyse --ansi --error-format symplify"
+            "./vendor/bin/phpstan analyse --memory-limit=-1 --ansi"
+        ],
+        "phpstan-cli": [
+            "./vendor/bin/phpstan analyse --memory-limit=-1 --error-format github --ansi"
         ],
         "rector": [
             "./vendor/bin/rector process --config rector.php"
