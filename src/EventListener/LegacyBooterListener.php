@@ -39,6 +39,7 @@ class LegacyBooterListener implements EventSubscriberInterface
     )
     {
         $this->kernel    = $kernel;
+
     }//end __construct()
 
     /**
