@@ -8,11 +8,6 @@ parameters:
     parallel:
         maximumNumberOfProcesses: 6
 
-    excludePaths:
-        - lib/model/map
-        - lib/model/om
-        - src/Kinderopvang/Core/Bridge/Transformer/LegacyUserTransformer
-
     paths:
         - src
         - tests
