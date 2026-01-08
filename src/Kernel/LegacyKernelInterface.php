@@ -25,7 +25,7 @@ interface LegacyKernelInterface extends HttpKernelInterface
      * @return mixed
      * @throws RuntimeException
      */
-    public function boot(ContainerInterface $container);
+    public function boot();
 
     /**
      * Check whether the legacy kernel is already booted or not.

@@ -30,26 +30,15 @@ class LegacyBooterListener implements EventSubscriberInterface
     private $kernel;
 
     /**
-     * The container.
-     *
-     * @var ContainerInterface
-     */
-    private $container;
-
-    /**
      * LegacyBooterListener constructor.
      *
      * @param LegacyKernelInterface $kernel    The legacy kernel.
-     * @param ContainerInterface    $container The container.
      */
     public function __construct(
         LegacyKernelInterface $kernel,
-        ContainerInterface $container
     )
     {
         $this->kernel    = $kernel;
-        $this->container = $container;
-
     }//end __construct()
 
     /**
@@ -65,7 +54,7 @@ class LegacyBooterListener implements EventSubscriberInterface
     public function onKernelRequest(RequestEvent $event)
     {
         if ($this->kernel->isBooted() === FALSE) {
-            $this->kernel->boot($this->container);
+            $this->kernel->boot();
         }
 
     }//end onKernelRequest()
